@@ -67,11 +67,15 @@ I wrote about different training setups:
 - When it might make sense to freeze one task head
 Also explained how I’d use a pretrained model like DistilBERT and fine-tune only certain layers depending on the data size and task.
 
-### Task 4: Simulated Training Loop
-To show how multi-task training would work, I wrote a training loop that:
-- Loads fake inputs + labels
-- Runs forward and computes loss for each task
-- Combines the losses and updates the model
+### Task 4: Training Loop
+For Task 4, I wrote a basic training loop in `train.py` to simulate multi-task training using fake data.
+
+- I created a dummy dataset with random labels
+- Each batch goes through the model to get predictions for both tasks
+- I used `CrossEntropyLoss` for both tasks and added the two losses together
+- The model updates its weights just like in real training
+
+This shows how I’d structure training with real data, and keeps the code simple and easy to follow.
 
 ---
 
