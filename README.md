@@ -19,12 +19,14 @@ Hi! This is my take-home project for the Machine Learning Engineer Apprentice ro
 
 ```
 fetch_takehome/
-├── main.py          # Runs Task 1 + a forward pass of Task 2
-├── tasks.py         # MultiTaskModel definition (transformer + two heads)
-├── train.py         # Simulated training loop with fake data
-├── requirements.txt # Python packages I used
-├── README.md        # This file!
+├── main.py           # Runs Task 1 + a forward pass of Task 2
+├── tasks.py          # MultiTaskModel definition (transformer + two heads)
+├── train.py          # Simulated training loop with fake data
+├── requirements.txt  # Python packages I used
+├── README.md         # Project overview + task summaries
+├── Task3.md          # Detailed write-up for training & transfer learning
 ```
+
 
 ---
 
@@ -61,11 +63,14 @@ I built a simple model with one shared transformer (DistilBERT) and two separate
 - **Task B**: 2-class sentiment analysis
 
 ### Task 3: Training & Transfer Learning
-I wrote about different training setups:
-- When to freeze the full model
-- When to just freeze the transformer
-- When it might make sense to freeze one task head
-Also explained how I’d use a pretrained model like DistilBERT and fine-tune only certain layers depending on the data size and task.
+I wrote a full breakdown in [Task3.md](./Task3.md), but here’s a quick summary:
+
+- I explored different ways to freeze parts of the model during training (e.g. full model, just the transformer, or one task head).
+- For transfer learning, I’d use `distilbert-base-uncased` and freeze the earlier transformer layers while fine-tuning the later layers and task heads.
+- The goal is to balance general language understanding from pretrained weights with task-specific fine-tuning.
+
+See [Task3.md](./Task3.md) for the full write-up.
+
 
 ### Task 4: Training Loop
 For Task 4, I wrote a basic training loop in `train.py` to simulate multi-task training using fake data.
